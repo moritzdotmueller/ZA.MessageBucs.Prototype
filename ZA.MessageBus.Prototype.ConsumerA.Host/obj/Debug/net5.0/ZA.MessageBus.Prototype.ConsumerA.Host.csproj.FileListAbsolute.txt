@@ -1,7 +1,0 @@
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\bin\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.dll
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\bin\Debug\net5.0\ZA.MessageBus.Prototype.Contracts.dll
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\bin\Debug\net5.0\ZA.MessageBus.Prototype.Contracts.pdb
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.Host.csprojAssemblyReference.cache
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.Host.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.Host.AssemblyInfoInputs.cache
-C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA.Host\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.Host.AssemblyInfo.cs
