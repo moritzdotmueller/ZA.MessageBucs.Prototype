@@ -58,7 +58,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
             var consumer = (AsyncEventingBasicConsumer) sender;
             try
             {
-                var messageType = typeof(IMessage).Assembly.GetType($"ZA.MessageBus.Prototype.Contracts.Messages.{@event.RoutingKey}");
+                var messageType = typeof(IMessage).Assembly.GetType(@event.RoutingKey);
                 var message = System.Text.Json.JsonSerializer.Deserialize(Encoding.UTF8.GetString(@event.Body.ToArray()), messageType);
                 var handler = handlerFactory.Get(messageType);
                 var methods = handler.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance);

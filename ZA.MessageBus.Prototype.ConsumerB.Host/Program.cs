@@ -34,7 +34,11 @@ namespace ZA.MessageBus.Prototype.ConsumerB.Host
                 s.ForSingletonOf<MessageBusConsumerConfig>().Use(c => new MessageBusConsumerConfig
                 {
                     ConsumerName = "ConsumerB",
-                    Topics = new[] { "CreateSettlementSummaryCommand", "SettlementSummaryCreated" },
+                    Topics = new[]
+                    {
+                        typeof(CreateSettlementSummaryCommand).FullName,
+                        typeof(SettlementSummaryCreated).FullName
+                    },
                     RabbitMqConfig = c.GetInstance<RabbitMqConfig>()
                 });
             });

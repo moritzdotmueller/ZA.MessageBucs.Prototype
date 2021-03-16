@@ -21,6 +21,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
             using var connection = connectionFactory.CreateConnection();
             using var model = connection.CreateModel();
 
+            model.ExchangeDelete($"ZA.{config.ConsumerName}.exchange");
             model.ExchangeDeclare($"ZA.{config.ConsumerName}.exchange", "topic", true, false);
             model.QueueDeclare($"ZA.{config.ConsumerName}.queue", true, false, false);
             model.QueueBind($"ZA.{config.ConsumerName}.queue", $"ZA.{config.ConsumerName}.exchange", "#");

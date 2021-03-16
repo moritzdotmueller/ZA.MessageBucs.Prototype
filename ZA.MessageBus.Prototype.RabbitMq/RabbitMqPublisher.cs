@@ -33,7 +33,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
                 props.Persistent = true;
                 model.BasicPublish(
                     "ZA.MessageBus", 
-                    message.GetType().Name, 
+                    message.GetType().FullName, 
                     true,
                     props, 
                     Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));

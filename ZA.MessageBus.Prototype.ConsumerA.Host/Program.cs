@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using ZA.MessageBus.Prototype.Contracts;
+using ZA.MessageBus.Prototype.Contracts.Messages;
 using ZA.MessageBus.Prototype.RabbitMq;
 
 namespace ZA.MessageBus.Prototype.ConsumerA.Host
@@ -29,7 +30,10 @@ namespace ZA.MessageBus.Prototype.ConsumerA.Host
                 s.ForSingletonOf<MessageBusConsumerConfig>().Use(c => new MessageBusConsumerConfig
                 {
                     ConsumerName = "ConsumerA",
-                    Topics = new [] { "CreateSettlementSummaryCommand" },
+                    Topics = new []
+                    {
+                        typeof(CreateSettlementSummaryCommand).FullName,
+                    },
                     RabbitMqConfig = c.GetInstance<RabbitMqConfig>()
                 });
             });
