@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
 using RabbitMQ.Client;
 using ZA.MessageBus.Prototype.Contracts;
 
@@ -36,7 +36,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
                     message.GetType().FullName, 
                     true,
                     props, 
-                    Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
+                    Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message, message.GetType())));
             }
             model.TxCommit();
         }
