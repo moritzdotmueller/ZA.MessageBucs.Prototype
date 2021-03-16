@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZA.MessageBus.Prototype.Contracts.Messages
+﻿namespace ZA.MessageBus.Prototype.Contracts.Messages
 {
     public class SettlementSummaryCreated : MessageBase
     {

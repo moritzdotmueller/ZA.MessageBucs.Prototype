@@ -9,6 +9,7 @@ namespace ZA.MessageBus.Prototype.ConsumerA
     {
         public Task HandleAsync(CreateSettlementSummaryCommand command)
         {
+            Console.WriteLine($"ConsumerA: {command.Message}");
             return Task.CompletedTask;
         }
     }

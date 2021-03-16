@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ZA.MessageBus.Prototype.ConsumerA\ZA.MessageBus.Prototype.ConsumerA.csproj" />
+    <ProjectReference Include="..\ZA.MessageBus.Prototype.ConsumerB\ZA.MessageBus.Prototype.ConsumerB.csproj" />
     <ProjectReference Include="..\ZA.MessageBus.Prototype.RabbitMq\ZA.MessageBus.Prototype.RabbitMq.csproj" />
   </ItemGroup>
 

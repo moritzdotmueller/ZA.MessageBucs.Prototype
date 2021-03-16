@@ -1,23 +1,28 @@
-﻿using Lamar;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Lamar;
 using Microsoft.Extensions.DependencyInjection;
 using ZA.MessageBus.Prototype.Contracts;
+using ZA.MessageBus.Prototype.Contracts.Messages;
 using ZA.MessageBus.Prototype.RabbitMq;
 
-namespace ZA.MessageBus.Prototype.ConsumerA.Host
+namespace ZA.MessageBus.Prototype.ConsumerB.Host
 {
     class Program
     {
         static async Task Main(string[] args)
         {
-            var container = await Container.BuildAsync(s => 
+            var container = await Container.BuildAsync(s =>
             {
                 s.Scan(a =>
                 {
                     a.AssembliesFromApplicationBaseDirectory(assembly => assembly.GetName().Name.StartsWith("ZA"));
                     a.RegisterConcreteTypesAgainstTheFirstInterface();
+                    
                 });
+
+                s.For<IHandler<CreateSettlementSummaryCommand>>().Use<MultiHandler>();
+                s.For<IHandler<SettlementSummaryCreated>>().Use<MultiHandler>();
 
                 s.ForSingletonOf<RabbitMqConfig>().Use(new RabbitMqConfig
                 {
@@ -28,8 +33,8 @@ namespace ZA.MessageBus.Prototype.ConsumerA.Host
                 });
                 s.ForSingletonOf<MessageBusConsumerConfig>().Use(c => new MessageBusConsumerConfig
                 {
-                    ConsumerName = "ConsumerA",
-                    Topics = new [] { "CreateSettlementSummaryCommand" },
+                    ConsumerName = "ConsumerB",
+                    Topics = new[] { "CreateSettlementSummaryCommand", "SettlementSummaryCreated" },
                     RabbitMqConfig = c.GetInstance<RabbitMqConfig>()
                 });
             });
@@ -40,7 +45,8 @@ namespace ZA.MessageBus.Prototype.ConsumerA.Host
 
             var consumer = container.GetService<IConsumer>();
             consumer.Start();
-            Console.ReadLine(); }
+            Console.ReadLine();
+        }
     }
 
     public class LamarHandlerFactory : IHandlerFactory
@@ -51,6 +57,8 @@ namespace ZA.MessageBus.Prototype.ConsumerA.Host
         {
             this.container = container;
         }
+
+        //Can one service implement a handler interface multiple times?
         public object Get(Type messageType)
         {
             var handlerType = typeof(IHandler<>).MakeGenericType(messageType);

@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace ZA.MessageBus.Prototype.Contracts.Messages
+﻿namespace ZA.MessageBus.Prototype.Contracts.Messages
 {
     public class CreateSettlementSummaryCommand : MessageBase
     {
-        public Guid ArchiveId { get; init; }
+        public string Message { get; init; }
     }
 }

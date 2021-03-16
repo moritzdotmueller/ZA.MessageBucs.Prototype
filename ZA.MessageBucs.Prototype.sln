@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZA.MessageBus.Prototype.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZA.MessageBus.Prototype.Contracts", "ZA.MessageBus.Prototype.Contracts\ZA.MessageBus.Prototype.Contracts.csproj", "{F580BCDF-B901-453F-B9C2-9219B6F93A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZA.MessageBus.Prototype.ConsumerA.Host", "ZA.MessageBus.Prototype.ConsumerA.Host\ZA.MessageBus.Prototype.ConsumerA.Host.csproj", "{C3CBC5B0-05C9-4C63-BCC6-87EF2BBC24AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZA.MessageBus.Prototype.ConsumerA.Host", "ZA.MessageBus.Prototype.ConsumerA.Host\ZA.MessageBus.Prototype.ConsumerA.Host.csproj", "{C3CBC5B0-05C9-4C63-BCC6-87EF2BBC24AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZA.MessageBus.Prototype.RabbitMq", "ZA.MessageBus.Prototype.RabbitMq\ZA.MessageBus.Prototype.RabbitMq.csproj", "{0E26BBB5-ABD4-4C5A-A165-7CD78A93D4FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZA.MessageBus.Prototype.RabbitMq", "ZA.MessageBus.Prototype.RabbitMq\ZA.MessageBus.Prototype.RabbitMq.csproj", "{0E26BBB5-ABD4-4C5A-A165-7CD78A93D4FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZA.MessageBus.Prototype.ConsumerB", "ZA.MessageBus.Prototype.ConsumerB\ZA.MessageBus.Prototype.ConsumerB.csproj", "{C38DD6A3-CAD9-448B-996B-8D56810B4F1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZA.MessageBus.Prototype.ConsumerB.Host", "ZA.MessageBus.Prototype.ConsumerB.Host\ZA.MessageBus.Prototype.ConsumerB.Host.csproj", "{77C825FA-F2A6-4A1C-A3EF-EE1AC718D663}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0E26BBB5-ABD4-4C5A-A165-7CD78A93D4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E26BBB5-ABD4-4C5A-A165-7CD78A93D4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E26BBB5-ABD4-4C5A-A165-7CD78A93D4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38DD6A3-CAD9-448B-996B-8D56810B4F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38DD6A3-CAD9-448B-996B-8D56810B4F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38DD6A3-CAD9-448B-996B-8D56810B4F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38DD6A3-CAD9-448B-996B-8D56810B4F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C825FA-F2A6-4A1C-A3EF-EE1AC718D663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C825FA-F2A6-4A1C-A3EF-EE1AC718D663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C825FA-F2A6-4A1C-A3EF-EE1AC718D663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C825FA-F2A6-4A1C-A3EF-EE1AC718D663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
