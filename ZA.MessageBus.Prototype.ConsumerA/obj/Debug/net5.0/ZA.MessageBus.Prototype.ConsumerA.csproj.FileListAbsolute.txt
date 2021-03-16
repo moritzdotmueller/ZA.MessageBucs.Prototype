@@ -1,0 +1,5 @@
+C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.csprojAssemblyReference.cache
+C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.AssemblyInfoInputs.cache
+C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.AssemblyInfo.cs
+C:\Users\extern.mmueller\source\repos\ZA.MessageBucs.Prototype\ZA.MessageBus.Prototype.ConsumerA\obj\Debug\net5.0\ZA.MessageBus.Prototype.ConsumerA.csproj.CoreCompileInputs.cache

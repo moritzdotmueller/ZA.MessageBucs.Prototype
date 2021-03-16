@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZA.MessageBus.Prototype.Contracts\ZA.MessageBus.Prototype.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
