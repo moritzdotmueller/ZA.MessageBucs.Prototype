@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using ZA.MessageBus.Prototype.Contracts;
@@ -38,7 +39,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
                 UserName = config.RabbitMqConfig.User,
                 Password = config.RabbitMqConfig.Password,
                 AutomaticRecoveryEnabled = true,
-                DispatchConsumersAsync =  true
+                DispatchConsumersAsync = true
             };
             var connection = connectionFactory.CreateConnection();
             var model = connection.CreateModel();
@@ -55,11 +56,13 @@ namespace ZA.MessageBus.Prototype.RabbitMq
 
         private async Task onMessageReceived(object sender, BasicDeliverEventArgs @event)
         {
-            var consumer = (AsyncEventingBasicConsumer) sender;
+            var consumer = (AsyncEventingBasicConsumer)sender;
             try
             {
                 var messageType = typeof(IMessage).Assembly.GetType(@event.RoutingKey);
-                var message = System.Text.Json.JsonSerializer.Deserialize(Encoding.UTF8.GetString(@event.Body.ToArray()), messageType);
+                var messageAsJObject = JObject.Parse(Encoding.UTF8.GetString(@event.Body.ToArray()));
+                messageAsJObject["Id"] ??= @event.BasicProperties.CorrelationId ?? Guid.NewGuid().ToString();
+                var message = messageAsJObject.ToObject(messageType);
                 var handler = handlerFactory.Get(messageType);
                 var methods = handler.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance);
                 var matchingMethod = methods.SingleOrDefault(
