@@ -31,6 +31,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
             {
                 var props = model.CreateBasicProperties();
                 props.Persistent = true;
+                props.CorrelationId = message.Id;
                 model.BasicPublish(
                     "ZA.MessageBus", 
                     message.GetType().FullName, 
