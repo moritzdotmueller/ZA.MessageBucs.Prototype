@@ -38,7 +38,6 @@ namespace ZA.MessageBus.Prototype.RabbitMq
                 Port = config.RabbitMqConfig.Port,
                 UserName = config.RabbitMqConfig.User,
                 Password = config.RabbitMqConfig.Password,
-                AutomaticRecoveryEnabled = true,
                 DispatchConsumersAsync = true
             };
             var connection = connectionFactory.CreateConnection();
