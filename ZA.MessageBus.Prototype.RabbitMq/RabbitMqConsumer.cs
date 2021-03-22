@@ -59,21 +59,7 @@ namespace ZA.MessageBus.Prototype.RabbitMq
             var consumer = (AsyncEventingBasicConsumer)sender;
             try
             {
-                var messageType = typeof(IMessage).Assembly.GetType(@event.RoutingKey);
-                var messageAsJObject = JObject.Parse(Encoding.UTF8.GetString(@event.Body.ToArray()));
-                messageAsJObject["Id"] ??= @event.BasicProperties.CorrelationId ?? Guid.NewGuid().ToString();
-                var message = messageAsJObject.ToObject(messageType);
-                var handler = handlerFactory.Get(messageType);
-                var methods = handler.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance);
-                var matchingMethod = methods.SingleOrDefault(
-                    m => m.Name == nameof(IHandler<IMessage>.HandleAsync)
-                         && m.GetParameters().SingleOrDefault(p => p.ParameterType == messageType) != null);
-                if (matchingMethod != null)
-                {
-                    var task = (Task)matchingMethod.Invoke(handler, new object[] { message });
-                    await task;
-                }
-
+                await this.invokeHandler(@event);
                 consumer.Model.BasicAck(@event.DeliveryTag, false);
             }
             catch (Exception e)
@@ -81,6 +67,24 @@ namespace ZA.MessageBus.Prototype.RabbitMq
                 consumer.Model.BasicReject(@event.DeliveryTag, false);
                 //Logging
                 //Reject -> Dead-Letter-Exchange
+            }
+        }
+
+        private async Task invokeHandler(BasicDeliverEventArgs @event)
+        {
+            var messageType = typeof(IMessage).Assembly.GetType(@event.RoutingKey);
+            var messageAsJObject = JObject.Parse(Encoding.UTF8.GetString(@event.Body.ToArray()));
+            messageAsJObject["Id"] ??= @event.BasicProperties.CorrelationId ?? Guid.NewGuid().ToString();
+            var message = messageAsJObject.ToObject(messageType);
+            var handler = this.handlerFactory.Get(messageType);
+            var methods = handler.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance);
+            var matchingMethod = methods.SingleOrDefault(
+                m => m.Name == nameof(IHandler<IMessage>.HandleAsync)
+                     && m.GetParameters().SingleOrDefault(p => p.ParameterType == messageType) != null);
+            if (matchingMethod != null)
+            {
+                var task = (Task) matchingMethod.Invoke(handler, new object[] {message});
+                await task;
             }
         }
 
